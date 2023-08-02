@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/graveBooking.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!--navbar-->
+
+    <nav class="navbar">
+      <div class="navbar-logo">Logo</div>
+      <div class="hamburger">
+        <svg
+          class="hamburger-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="white"
+          width="24"
+          height="24"
+        >
+          <!-- Insert your downloaded SVG code here -->
+        </svg>
+      </div>
+      <ul class="navbar-nav">
+        <li><a href="/html/index.html">Home</a></li>
+        <li class="has-dropdown">
+          <a href="/php/index.php">Funeral Services</a>
+          <ul class="dropdown-menu">
+            <!-- Dropdown options will be populated dynamically using JavaScript -->
+          </ul>
+        </li>
+        <li><a href="/html/cemeteries.html">Cemeteries</a></li>
+      </ul>
+      <div class="hamburger"></div>
+    </nav>
+    <script src="../js/graveBooking.js"></script>
+    <div class="root-container">
+      <div class="booking-heading-container">
+        <h1 class="book-now-text">Book Now</h1>
+        <p class="booking-subtext">
+          To book a grave, simple fill in this form and we will return to you in
+          the next 5 minutes
+        </p>
+      </div>
+      <form method="post" action="/php/send_email.php">
+        <label for="name">Name:</label><br />
+        <input type="text" id="name" name="name" required /><br /><br />
+
+        <label for="contact">Contact Number:</label><br />
+        <input type="text" id="contact" name="contact" required /><br /><br />
+
+        <label for="email">Email:</label><br />
+        <input type="email" id="email" name="email" required /><br /><br />
+
+        <label for="message">Message:</label><br />
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          cols="50"
+          required
+        ></textarea
+        ><br /><br />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

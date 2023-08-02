@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Service Providers</title>
+    <!-- Add CSS stylesheets and other dependencies here -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+        /* Table style */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Center the font in table cells */
+        th, td {
+            vertical-align: middle;
+        }
+
+        /* Center the text in table cells */
+        td {
+            text-align: center;
+        }
+        .edit-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .cancel-button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .edit-icon {
+            cursor: pointer;
+        }
+
+        .save-icon {
+            color: #4CAF50;
+        }
+
+        #see-more {
+            margin-bottom: 20px;
+        }
+
+        #see-more button {
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        /* Custom modal dialog box styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Added to center the content vertically */
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 500px; /* Added to limit the width of the dialog box */
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            }
+
+        .modal-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .modal-button:first-child {
+            background-color: #2196F3;
+        }
+
+        .modal-button:hover {
+            opacity: 0.8;
+        }
+        #snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 14px;
+        }
+
+        #snackbar.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+    </style>
+</head>
+<body>
+    <?php
+        // Function to fetch all service providers
+        // Include the connection file
+        require_once 'database.php';
+
+        // Function to create a new service provider
+        function createServiceProvider($service_provider_name, $email, $phone, $address, $region_id)
+        {
+            global $conn;
+            $service_provider_name = $conn->real_escape_string($service_provider_name);
+            $email = $conn->real_escape_string($email);
+            $phone = $conn->real_escape_string($phone);
+            $address = $conn->real_escape_string($address);
+            $region_id = $conn->real_escape_string($region_id);
+
+            $sql = "INSERT INTO service_providers (service_provider_name, email, phone, address, region_id) VALUES ('$service_provider_name', '$email', '$phone', '$address', '$region_id')";
+            if ($conn->query($sql) === true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        // Function to update a service provider
+        function updateServiceProvider($service_provider_name, $email, $phone, $address, $region_id)
+        {
+            global $conn;
+            $service_provider_name = $conn->real_escape_string($service_provider_name);
+            $email = $conn->real_escape_string($email);
+            $phone = $conn->real_escape_string($phone);
+            $address = $conn->real_escape_string($address);
+            $region_id = $conn->real_escape_string($region_id);
+
+            $sql = "UPDATE service_providers SET email = '$email', phone = '$phone', address = '$address', region_id = '$region_id' WHERE service_provider_name = '$service_provider_name'";
+            if ($conn->query($sql) === true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Function to delete a service provider
+        function deleteServiceProvider($service_provider_name)
+        {
+            global $conn;
+            $service_provider_name = $conn->real_escape_string($service_provider_name);
+
+            $sql = "DELETE FROM service_providers WHERE service_provider_name = '$service_provider_name'";
+            if ($conn->query($sql) === true) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        function getAllServiceProviders()
+        {
+            global $conn;
+            $sql = "SELECT * FROM service_providers";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $serviceProviders = [];
+                while ($row = $result->fetch_assoc()) {
+                    $serviceProviders[] = $row;
+                }
+                return $serviceProviders;
+            } else {
+                return null;
+            }
+        }
+
+        // Function to fetch all regions
+        function getAllRegions()
+        {
+            global $conn;
+            $sql = "SELECT * FROM regions";
+            $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                $regions = [];
+                while ($row = $result->fetch_assoc()) {
+                    $regions[] = $row;
+                }
+                return $regions;
+            } else {
+                return [];
+            }
+        }
+
+        // Handle the GET request to fetch service providers
+        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+            // Check if an offset parameter is provided to support pagination
+            $offset = isset($_GET['offset']) ? (int)$_GET['offset'] : 0;
+
+            // Fetch service providers with the provided offset
+            $serviceProviders = getAllServiceProviders();
+
+            // Return the service providers as JSON
+            header('Content-Type: application/json');
+            echo json_encode($serviceProviders);
+            exit();
+        }
+
+        // Handle the POST request for creating a service provider
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $service_provider_name = $_POST['service_provider_name'];
+            $email = $_POST['email'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+            $region_id = $_POST['region_id'];
+
+            if (createServiceProvider($service_provider_name, $email, $phone, $address, $region_id)) {
+                // Return a success response
+                http_response_code(200);
+                echo 'Service provider created successfully!';
+            } else {
+                // Return an error response
+                http_response_code(500);
+                echo 'Failed to create service provider.';
+            }
+        }
+
+        // Handle the PUT request for updating a service provider
+        if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+            parse_str(file_get_contents("php://input"), $putParams);
+            $service_provider_name = $putParams['service_provider_name'];
+            $address = $putParams['address'];
+            $email = $putParams['email'];
+            $phone = $putParams['phone'];
+            $region_id = $putParams['region_id'];
+
+            if (updateServiceProvider($service_provider_name, $email, $phone, $address, $region_id)) {
+                // Return a success response
+                http_response_code(200);
+                echo 'Service provider updated successfully!';
+            } else {
+                // Return an error response
+                http_response_code(500);
+                echo 'Failed to update service provider.';
+            }
+        }
+
+        // Handle the DELETE request for deleting a service provider
+        if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+            $service_provider_name = $_GET['service_provider_name'];
+
+            if (deleteServiceProvider($service_provider_name)) {
+                // Return a success response
+                http_response_code(200);
+                echo 'Service provider deleted successfully!';
+            } else {
+                // Return an error response
+                http_response_code(500);
+                echo 'Failed to delete service provider.';
+            }
+        }
+
+        $serviceProviders = getAllServiceProviders();
+        $count = count($serviceProviders);
+
+        if ($serviceProviders === null) {
+            echo "<h2>Service Providers</h2>";
+            
+            // Display message when no service providers are found
+            echo "<p>Sorry, there are $count service providers in the database. <a href='#create-service-provider-form'>Start creating service providers here</a>.</p>";
+        
+        } else {
+            echo "<h1>Service Providers</h1>";
+            // Display message with the number of service providers
+            echo "<p>There are $count service providers ready for you to manage. <a href='#create-service-provider-form-header'>Start creating service providers here</a>.</p>";
+        
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        
+                // Display table with service providers
+                echo "<table id='service-providers-table'>";
+                echo "<thead>";
+                echo "<tr>";
+                echo "<th>Name</th>";
+                echo "<th>Email</th>";
+                echo "<th>Phone</th>";
+                echo "<th>Address</th>";
+                echo "<th>Region</th>"; // Assuming you want to display the region name instead of its ID.
+                echo "<th>Actions</th>";
+                echo "</tr>";
+                echo "</thead>";
+                echo "<tbody>";
+                foreach ($serviceProviders as $provider) {
+                    echo "<tr>";
+                    echo "<td>" . $provider['service_provider_name'] . "</td>"; // Use 'service_provider_name' instead of 'id'.
+                    echo "<td>" . $provider['email'] . "</td>";
+                    echo "<td>" . $provider['phone'] . "</td>";
+                    echo "<td>" . $provider['address'] . "</td>";
+                    echo "<td data-region-id='" . $provider['region_id'] . "'>" . $provider['region_id'] . "</td>"; // Assuming you want to display the region name instead of its ID.
+                    echo "<td>";
+                    // Add buttons or links for updating and deleting service providers
+                    echo "<button class='edit-button' data-id='" . $provider['service_provider_name'] . "'>Edit</button>"; // Use 'service_provider_name' instead of 'id'.
+                    echo "<button class='delete-button' data-id='" . $provider['service_provider_name'] . "'>Delete</button>"; // Use 'service_provider_name' instead of 'id'.
+                    echo "</td>";
+                    echo "</tr>";
+                }
+                echo "</tbody>";
+                echo "</table>";
+                
+                // Add the form for creating a new service provider
+                echo "<h1 id='create-service-provider-form-header'>Create Service Provider</h1>";
+        
+                echo "<form id='create-service-provider-form'>";
+                echo "<div>";
+                echo "<label for='name'>Name:</label>";
+                echo "<input type='text' id='name' name='name' required>";
+                echo "</div>";
+                echo "<div>";
+                echo "<label for='email'>Email:</label>";
+                echo "<input type='email' id='email' name='email' required>";
+                echo "</div>";
+                echo "<div>";
+                echo "<label for='phone'>Phone:</label>";
+                echo "<input type='tel' id='phone' name='phone' required>";
+                echo "</div>";
+                echo "<div>";
+                echo "<label for='address'>Address:</label>";
+                echo "<input type='text' id='address' name='address' required>";
+                echo "</div>";
+                echo "<div>";
+                echo "<label for='region_id'>Region:</label>";
+                echo "<select id='region_id' name='region_id' required>";
+                $regions = getAllRegions();
+                foreach ($regions as $region) {
+                    $region_id = $region_id['region_id'];
+                    $regionName = $region['regionName'];
+                    echo "<option value='$regionName'>$regionName</option>";
+                }
+                echo "</select>";
+                echo "</div>";
+                echo "<div>";
+                echo "<button type='submit'>Create</button>";
+                echo "</div>";
+                echo "</form>";
+                echo "<div id='create-message'></div>";
+            }
+        }
+    ?>
+
+    <!-- Add the form for adding a new service provider -->
+    <!-- Add JavaScript code for handling form submission and updating the service providers table -->
+    <script>
+        // JavaScript code for handling form submission and updating the service providers table
+        document.getElementById('create-service-provider-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get the form data
+            var form = event.target;
+            
+            var service_provider_name = form.elements['service_provider_name'].value;
+            var email = form.elements['email'].value;
+            var phone = form.elements['phone'].value;
+            var address = form.elements['address'].value;
+            var regionId = form.elements['region_id'].value;
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Configure the request
+            xhr.open('POST', 'service_providers.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            // Define the callback function
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Request succeeded
+                        var response = xhr.responseText;
+                        document.getElementById('create-message').innerHTML = response;
+                        showSnackbar(response);
+
+                        // Append the new service provider directly to the table
+                        var table = document.getElementById('service-providers-table');
+                        var row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>Just Added</td>
+                            <td>${service_provider_name}</td>
+                            <td>${email}</td>
+                            <td>${phone}</td>
+                            <td>${address}</td>
+                            <td data-region-name="${regionName}">${regionName}</td>
+                            <td>
+                                <button class="edit-button" data-id="new">Edit</button>
+                                <button class="delete-button" data-id="new">Delete</button>
+                            </td>
+                        `;
+                        table.querySelector('tbody').appendChild(row);
+                    } else {
+                        // Request failed
+                        console.error('Failed to create service provider.');
+                    }
+                }
+            };
+
+            // Send the request
+            var data = 'service_provider_name=' + encodeURIComponent(service_provider_name) +
+                    '&email=' + encodeURIComponent(email) +
+                    '&phone=' + encodeURIComponent(phone) +
+                    '&address=' + encodeURIComponent(address) +
+                    '&regionName=' + encodeURIComponent(regionName);
+            xhr.send(data);
+        });
+        // Function to display the snackbar
+        function showSnackbar(message) {
+            var snackbar = document.getElementById('snackbar');
+            snackbar.textContent = message;
+            snackbar.classList.add('show');
+            setTimeout(function() {
+                snackbar.classList.remove('show');
+            }, 3000); // Show the snackbar for 3 seconds
+        }
+
+        // Function to fetch service providers and update the table
+        function fetchServiceProviders() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'service_providers.php', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Request succeeded
+                        var serviceProviders = JSON.parse(xhr.responseText);
+                        if (serviceProviders === null) {
+                            // Display a message when no service providers are found
+                            var table = document.getElementById('service-providers-table');
+                            table.innerHTML = '<p>No service providers found in the database. Please add more service providers.</p>';
+                        } else {
+                            // Update the table with service providers
+                            updateTable(serviceProviders);
+                        }
+                    } else {
+                        // Request failed
+                        console.error('Failed to fetch service providers.');
+                    }
+                }
+            };
+            xhr.send();
+        }
+
+        // Function to update the table with service providers
+        function updateTable(serviceProviders) {
+            var tableBody = document.querySelector('#service-providers-table tbody');
+            tableBody.innerHTML = '';
+
+            for (var i = 0; i < serviceProviders.length; i++) {
+                var provider = serviceProviders[i];
+                var row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${provider.service_provider_name}</td>
+                    <td>${provider.email}</td>
+                    <td>${provider.phone}</td>
+                    <td>${provider.address}</td>
+                    <td data-region-id="${provider.regionName}">${provider.region}</td>
+                    <td class="edit-icon" data-id="${provider.id}">&#x270E;</td>
+                    <td class="delete-icon" data-id="${provider.id}">&#x1F5D1;</td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+        // Function to handle the delete button click event
+        document.addEventListener('click', function(event) {
+            var target = event.target;
+            if (target.classList.contains('delete-button')) {
+                // Show a confirmation dialog
+                var confirmDelete = confirm('Are you sure you want to delete this service provider?');
+
+                if (confirmDelete) {
+                    var service_provider_name = target.getAttribute('data-id');
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('DELETE', 'service_providers.php?service_provider_name=' + service_provider_name, true);
+
+                    xhr.onreadystatechange = function() {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status === 200) {
+                                // Request succeeded
+                                var response = xhr.responseText;
+                                console.log('Service provider deleted:', response);
+                                // Refresh the service providers table without page reload
+                                fetchServiceProviders();
+                            } else {
+                                // Request failed
+                                console.error('Failed to delete service provider.');
+                            }
+                        }
+                    };
+                    xhr.send();
+                }
+            }
+        });
+
+        // Function to handle the edit button click event
+        document.addEventListener('click', function(event) {
+            var target = event.target;
+            if (target.classList.contains('edit-button')) {
+                var row = target.parentNode.parentNode;
+                var cells = row.cells;
+                
+                // Make the cells editable
+                for (var i = 1; i < cells.length - 2; i++) {
+                    var cell = cells[i];
+                    var content = cell.textContent;
+                    cell.innerHTML = `<input type="text" value="${content}">`;
+                }
+                
+                // Change the edit button to a save button
+                target.textContent = 'Save';
+                target.classList.remove('edit-button');
+                target.classList.add('save-button');
+
+                // Change the delete button to a cancel button
+                var deleteButton = row.querySelector('.delete-button');
+                deleteButton.textContent = 'Cancel';
+                deleteButton.classList.remove('delete-button');
+                deleteButton.classList.add('cancel-button');
+            }
+        });
+
+        // Function to handle the save button click event
+        document.addEventListener('click', function(event) {
+            var target = event.target;
+            if (target.classList.contains('save-button')) {
+                var row = target.parentNode.parentNode;
+                var cells = row.cells;
+                
+                // Get the updated values from the input fields
+                var updatedValues = [];
+                for (var i = 1; i < cells.length - 2; i++) {
+                    var input = cells[i].querySelector('input');
+                    updatedValues.push(input.value);
+                }
+                
+                // Perform the update operation using AJAX
+                var xhr = new XMLHttpRequest();
+                var id = cells[0].textContent;
+                xhr.open('PUT', 'service_providers.php?id=' + service_provider_name, true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            // Request succeeded
+                            var response = xhr.responseText;
+                            console.log('Service provider updated:', response);
+                            // Refresh the service providers table without page reload
+                            fetchServiceProviders();
+                        } else {
+                            // Request failed
+                            console.error('Failed to update service provider.');
+                        }
+                    }
+                };
+                xhr.send('name=' + encodeURIComponent(updatedValues[0]));
+            }
+        });
+        // Function to handle the cancel button click event
+        document.addEventListener('click', function(event) {
+            var target = event.target;
+            if (target.classList.contains('cancel-button')) {
+                // Show a confirmation dialog
+                var confirmCancel = confirm('Are you sure you want to cancel? Your changes will be lost.');
+
+                if (confirmCancel) {
+                    var row = target.parentNode.parentNode;
+                    var cells = row.cells;
+
+                    // Revert the cells to their original state
+                    for (var i = 1; i < cells.length - 2; i++) {
+                        var cell = cells[i];
+                        var input = cell.querySelector('input');
+                        cell.textContent = input.value;
+                    }
+
+                    // Change the save button back to an edit button
+                    var saveButton = row.querySelector('.save-button');
+                    saveButton.textContent = 'Edit';
+                    saveButton.classList.remove('save-button');
+                    saveButton.classList.add('edit-button');
+
+                    // Change the cancel button back to a delete button
+                    target.textContent = 'Delete';
+                    target.classList.remove('cancel-button');
+                    target.classList.add('delete-button');
+                }else {
+                    // If the admin cancels the confirmation, prevent further propagation of the click event
+                    event.stopPropagation();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

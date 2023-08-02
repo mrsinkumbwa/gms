@@ -1,0 +1,95 @@
+.booking-heading-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  text-decoration: none;
+}
+.navbar {
+  
+  position: fixed;
+  width: 100%;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1a88fe;
+  transition: all .50s ease;
+  padding: 10px;
+  
+}
+.navbar-nav{
+  list-style: none; /* Remove the default bullet points */
+  display: flex;
+
+}
+.navbar-nav li {
+  margin-right: 1em;
+  
+}
+.navbar-nav li a{
+  
+  color: white; 
+  padding: 1em 0em;
+  margin: 0em 10em 0em 0em;
+  transition: all .50 ease;   
+}
+.navbar-nav li a:hover{
+  color:#bcd6f2;
+
+}
+
+
+/* Dropdown styles */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+.hamburger-icon {
+  fill: white;
+  width: 24px;
+  height: 24px;
+}
+
+
+/* Responsive styles */
+@media only screen and (max-width: 50%) {
+  /* Hamburger styles */
+  .navbar-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 2%;
+      width: 270px;
+      height: 29vh;
+    }
+  
+    .hamburger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+  
+}
+
+/*
+End of Nav
+*/
+.root-container{
+  background-image: url('../img/booking-img.jpg');
+  background-size: cover; /* This ensures the image covers the entire div */
+  background-position: center;
+} 

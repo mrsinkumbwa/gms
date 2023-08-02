@@ -1,0 +1,339 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 25px; /* Adjust the height as needed */
+  z-index: 1000;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  padding: 10px;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-right: 17em;
+}
+
+.navbar-nav li {
+  display: inline-block;
+  text-align: center;
+}
+
+.navbar-nav li a {
+  color: white;
+  margin-right: 8rem;
+  transition: color 0.4s ease-in-out;
+  display: block;
+}
+
+
+header.scrolled {
+  position: fixed;
+  background-color: rgb(0, 72, 255);
+}
+
+header.scrolled .navbar-nav li a {
+  color: rgb(255, 255, 255);
+}
+
+.navbar-nav li a::after {
+  content: "";
+  width: 0;
+  display: block;
+  background-color: #007bff;
+  left: 0;
+  height: 3px;
+  transition: width 0.2s linear;
+}
+
+.navbar-nav li a:hover::after {
+  width: 100%;
+}
+
+.navbar-nav li a:hover {
+  color: #ffffff;
+  font-size: 1.05em;
+}
+
+
+/* Dropdown styles */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none;
+  margin-right: 22px;
+}
+.bar {
+  height: 2px;
+  width: 24px;
+  background: white;
+  margin: 5px 0;
+  opacity: 0.8;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 1350px) {
+  /* Hamburger styles */
+  
+  .navbar-nav li{
+    margin: 16px 0;
+    font-size: 1em;
+    
+  }
+  .navbar-nav li a{
+    margin-left: 80px;
+  }
+  .nav-link-container:hover{
+    background-color: rgb(31, 95, 255);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .navbar-nav.active{
+    left: 0;
+
+  }
+  .navbar-nav {
+    position: fixed;
+    left: -100%;
+    top: 45px;
+    background-color: rgb(0, 72, 255);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s;
+  }
+ 
+  .hamburger {
+    display: block;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  #svg-map-container{
+    margin-right: 200px;
+  }
+}
+.service-cards {
+  background-image: url("../img/booking-img.jpg");
+  background-size: cover; /* This ensures the image covers the entire div */
+  background-position: center;
+  margin-top: 48px;
+  height: 40em;
+}
+.service-provider-page-name {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  color: rgb(212, 241, 255);
+  font-size: 3em;
+  -webkit-text-stroke: 0.04em rgb(66, 111, 167); /* Set the text outline */
+}
+.company-details {
+  margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  background-size: cover; /* This ensures the image covers the entire div */
+  background-position: center;
+  font-size: 2em;
+  color: #e2e2e2;
+  -webkit-text-stroke: 0.04em rgb(0, 47, 109); /* Set the text outline */
+}
+
+.header-text,
+.subheader-text {
+  margin-bottom: 1em;
+}
+
+
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 2em 0em 2em 0em;
+  background-color: antiquewhite;
+}
+
+
+.read-more-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* Add this line to horizontally center the button */
+}
+.subheader-text {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.service-provider-page-root {
+  background-image: url("../img/main1.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 1100px;
+}
+
+.funeral-services-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.funeral-services {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.funeral-services .card {
+  position: relative;
+  flex: 1 1 300px;
+  margin: 2em;
+  background-color: #ffffff;
+  padding: 7em 7em;
+  border-radius: 39px;
+  overflow: hidden;
+  height: 20em;
+}
+.funeral-services .card:hover .card-header {
+  opacity: 0;
+}
+
+.funeral-services .card:hover .card-description {
+  opacity: 1;
+}
+.card-header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+.card-description {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-bottom: 3em;
+}
+
+/*reviews*/
+.reviews-section {
+  text-align: center;
+}
+
+.review-form-container {
+  display: inline-block;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.review-form-container input,
+.review-form-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.review-form-container textarea {
+  height: 120px;
+}
+
+.review-form-container button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.review-form-container button[type="submit"]:hover {
+  background-color: #45a049;
+}
+@media screen and (max-width: 600px) {
+  .review-card {
+    flex: 0 0 100%;
+    margin-right: 0;
+    margin-bottom: 1em;
+  }
+
+  .review-cards {
+    flex-wrap: wrap;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  .funeral-services {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .funeral-services .card {
+    flex-basis: 90%;
+  }
+}
+
+/*
+In the CSS code, we use the display: flex; property on the funeral-services section to create a flex container. The flex-wrap: wrap; allows the divs to wrap onto multiple lines when necessary. The justify-content: space-between; property evenly distributes the divs horizontally with space between them.
+
+Inside the media query @media (max-width: 50%), we override the width of the divs to 100% when the screen width is reduced to 50% or less, causing the cards to display vertically.
+
+Note: I corrected the class name "Burial Service" to "burial-service" and "Reperation of body" to "reparation-of-body" to follow best practices for CSS class names. Class names should be lowercase and separated by hyphens for readability and consistency.
+*/

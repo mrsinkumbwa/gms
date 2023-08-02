@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/service-reviews.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+          <div class="hamburger">
+            <!--navbar bars-->
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+  
+          <ul class="navbar-nav">
+            <div class="nav-link-container">
+              <li class="nav-link"><a href="/html/index.html">Home</a></li>
+            </div>
+            <div class="nav-link-container">
+              <li class="nav-link">
+                <a href="../html/service-providers-page.html">Funeral Services</a>
+                <ul class="dropdown-menu">
+                  <!-- Dropdown options will be populated dynamically using php and js -->
+                </ul>
+              </li>
+            </div>
+            <div class="nav-link-container">
+              <li class="nav-link">
+                <a href="/html/cemeteries.html">Buy Graves</a>
+              </li>
+            </div>
+          </ul>
+        </nav>
+      </header>
+    <!--leave arevie-->
+    <div class="review-card">
+        <!--displays the newly created comment-->
+        
+    </div>
+    
+    <form method="post" action="../php/review.php">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+    
+        <label for="surname">Surname:</label><br>
+        <input type="text" id="surname" name="surname" required><br><br>
+    
+        <label for="review">Leave a Review:</label><br>
+        <input type="text" name="message" rows="4" cols="50" required></textarea><br><br>
+    
+        <input type="submit" value="Submit">
+      </form>
+</body>
+</html>

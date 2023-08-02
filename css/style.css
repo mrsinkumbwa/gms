@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 25px; /* Adjust the height as needed */
+  z-index: 1000;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  padding: 10px;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-right: 17em;
+}
+
+.navbar-nav li {
+  display: inline-block;
+  text-align: center;
+}
+
+.navbar-nav li a {
+  color: white;
+  margin-right: 8rem;
+  transition: color 0.4s ease-in-out;
+  display: block;
+}
+
+
+header.scrolled {
+  position: fixed;
+  background-color: rgb(0, 72, 255);
+}
+
+header.scrolled .navbar-nav li a {
+  color: rgb(255, 255, 255);
+}
+
+.navbar-nav li a::after {
+  content: "";
+  width: 0;
+  display: block;
+  background-color: #007bff;
+  left: 0;
+  height: 3px;
+  transition: width 0.2s linear;
+}
+
+.navbar-nav li a:hover::after {
+  width: 100%;
+}
+
+.navbar-nav li a:hover {
+  color: #ffffff;
+  font-size: 1.05em;
+}
+
+
+/* Dropdown styles */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none;
+  margin-right: 22px;
+}
+.bar {
+  height: 2px;
+  width: 24px;
+  background: white;
+  margin: 5px 0;
+  opacity: 0.8;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+
+}
+/* Main content area */
+main {
+  margin: 4em 1em 0% 12em; /* Adjust the left margin based on your side navigation width */
+  padding: 2em;
+  transition: margin 0.3s ease-in-out; /* Add transition for smooth animation */
+}
+main h1 {
+  font-family: 'Poppins';
+  font-size:2rem;
+}
+
+main.full-width {
+  margin-left: 1em; /* Increase the left margin to occupy the full width when side navigation is hidden */
+}
+
+/* Search container style */
+.search-container {
+  margin-bottom: 20px;
+}
+
+/* Search input style */
+#search-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Search results style */
+#search-results {
+  list-style-type: none;
+  padding: 2em;
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 1350px) {
+  /* Hamburger styles */
+  
+  .navbar-nav li{
+    margin: 16px 0;
+    font-size: 1em;
+    
+  }
+  .navbar-nav li a{
+    margin-left: 80px;
+  }
+  .nav-link-container:hover{
+    background-color: rgb(31, 95, 255);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .navbar-nav.active{
+    left: 0;
+
+  }
+  .navbar-nav {
+    position: fixed;
+    left: -100%;
+    top: 45px;
+    background-color: rgb(0, 72, 255);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s;
+  }
+ 
+  .hamburger {
+    display: block;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  #svg-map-container{
+    margin-right: 200px;
+  }
+}
+
+/*
+End of Nav
+*/
+.root-container {
+  height: 200%;
+  width: 100%;
+  background: rgb(26, 136, 254);
+  background: linear-gradient(
+    172deg,
+    rgba(26, 136, 254, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+.main-image::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../img/region3.jpg");
+  background-position: center;
+  background-size: cover;
+  filter: brightness(50%);
+  z-index: -1;
+}
+.main-image {
+  width: 100%;
+  height: 39em;
+  text-align: center;
+  align-items: center; /* Adjust the opacity as needed */
+}
+
+.main-image h1 {
+  color: white;
+  font-size: 4.1em;
+}
+.main-image p {
+  color: white;
+  font-size: 1.05em;
+  padding: 4em 0em 2em 0em;
+}
+.main-image .search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the items horizontally */
+  width: 80%;
+  margin: 0 auto; /* Center the form horizontally */
+}
+
+.search-sp {
+  padding-top: 2em;
+  width: 40%;
+}
+.main-image input {
+  padding-left: 1em;
+  padding-right: 1em;
+
+  width: 90%;
+  font-size: 1.1em;
+  border-radius: 39px;
+}
+.main-image button {
+  display: block;
+  width: 100%;
+  padding: 0.6em 10em;
+  margin: 10px 10px 10px 10px;
+  color: white;
+  background: #3d5699;
+}
+/*
+End of Heavenly Tomb Background Images
+*/
+
+.top-container {
+  background-repeat: no-repeat;
+  background-size: cover; /* Adjust the background size to contain the entire image */
+  background-position: center center; /* Center the background image */
+  width: 100%;
+  height: 100%;
+  margin: 0 auto; /* Center the container horizontally */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the items vertically */
+  align-items: center; /* Center the items horizontally */
+  position: relative;
+  z-index: 1;
+}
+
+.findALoveOne-text-container {
+  /* Center the background image */
+  background-image: url("../img/region5.jpg");
+  background-position: center;
+  background-size: cover;
+  width: 95%;
+  background-color: #a0d8f8;
+  background-size: cover;
+  height: 90%;
+  align-items: center; /* Center the items horizontally */
+}
+.findALoveOne {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 30em;
+}
+.findALoveOne h1 {
+  font-size: 1.7em;
+  padding-top: 2.5em;
+  color: rgb(255, 255, 255);
+  padding-bottom: 3em;
+  display: flex;
+  justify-content: center;
+}
+.findALoveOne input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  margin-left: 34%;
+  padding: 7px;
+  margin-bottom: 2em;
+}
+.find-cemetery-container {
+  padding-top: 5em;
+}
+
+.find-cemetery-auto-scroll-text {
+  font-size: 1em;
+  animation: textScale 3s infinite alternate;
+  display: inline-block;
+  cursor: pointer;
+  transition: font-size 0.1s ease-in-out;
+}
+@keyframes textScale {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+.find-cemetery-auto-scroll-text:hover {
+  font-size: 1.21em;
+}
+.findALoveOne button {
+  width: 32%;
+  margin-left: 34%;
+
+  padding: 7px;
+  margin-bottom: 20px;
+  color: white;
+  background: #3d5699;
+}
+/*
+End of Find A Love One
+*/
+
+.find-a-cemetery-text {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  padding: 2em 0em;
+  color: #106dfa;
+}
+.find-cem-container{
+  background: white;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 39px;
+  margin-bottom: 30px;
+  padding-bottom: 40px;
+
+}
+svg {
+  width: 20em;
+  height: 20em;
+  padding-left: 37%;
+}
+
+path:hover {
+  fill: #007bff;
+  cursor: pointer;
+}
+.cemeteries-window-open {
+  position: absolute;
+  top: 0;
+  right: 0; /* Initially hidden off-screen */
+  width: 20em;
+  height: 20em;
+  background-color: #0554ff;
+  transition: right 0.3s ease-in-out;
+  display: none;
+}

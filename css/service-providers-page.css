@@ -1,0 +1,293 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 25px; /* Adjust the height as needed */
+  z-index: 1000;
+  background-color: transparent;
+  transition: all 0.5s ease;
+  padding: 10px;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: flex-end;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin-right: 17em;
+}
+
+.navbar-nav li {
+  display: inline-block;
+  text-align: center;
+}
+
+.navbar-nav li a {
+  color: white;
+  margin-right: 8rem;
+  transition: color 0.4s ease-in-out;
+  display: block;
+}
+
+
+header.scrolled {
+  position: fixed;
+  background-color: rgb(0, 72, 255);
+}
+
+header.scrolled .navbar-nav li a {
+  color: rgb(255, 255, 255);
+}
+
+.navbar-nav li a::after {
+  content: "";
+  width: 0;
+  display: block;
+  background-color: #007bff;
+  left: 0;
+  height: 3px;
+  transition: width 0.2s linear;
+}
+
+.navbar-nav li a:hover::after {
+  width: 100%;
+}
+
+.navbar-nav li a:hover {
+  color: #ffffff;
+  font-size: 1.05em;
+}
+
+
+/* Dropdown styles */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+.has-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.hamburger {
+  cursor: pointer;
+  display: none;
+  margin-right: 22px;
+}
+.bar {
+  height: 2px;
+  width: 24px;
+  background: white;
+  margin: 5px 0;
+  opacity: 0.8;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+
+
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 1350px) {
+  /* Hamburger styles */
+  
+  .navbar-nav li{
+    margin: 16px 0;
+    font-size: 1em;
+    
+  }
+  .navbar-nav li a{
+    margin-left: 80px;
+  }
+  .nav-link-container:hover{
+    background-color: rgb(31, 95, 255);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .navbar-nav.active{
+    left: 0;
+
+  }
+  .navbar-nav {
+    position: fixed;
+    left: -100%;
+    top: 45px;
+    background-color: rgb(0, 72, 255);
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    transition: 0.3s;
+  }
+ 
+  .hamburger {
+    display: block;
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  #svg-map-container{
+    margin-right: 200px;
+  }
+}
+
+.header-text {
+  margin-top: 4em;
+}
+/* Media query for responsive design */
+.root-container-service-providers {
+  background-image: url("../img/main1.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100em;
+}
+.service-providers-header-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  padding-top: 2.4em;
+  margin-bottom: 1em;
+}
+.service-providers-subheading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  margin: 1% 0% 1% 0;
+
+}
+
+.img-container{
+  width: 100%; /* Adjust the width and height as needed */
+  height: 20em;
+  background-image: url('../img/crop.jpg');
+  background-size: cover; /* This ensures the image covers the entire div */
+  background-position: center; /* Center the image within the div */
+
+}
+.search-container {
+  display: flex;
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+}
+
+.search-input {
+  flex: 1;
+  padding: 0.5em;
+  width: 75%;
+  margin-left: 12%; /* Center the input horizontally */
+  margin-bottom: 3%;
+  margin-top: 3%;
+  border-radius: 39px;
+
+}
+
+
+.search-button {
+  padding: 5px 10px;
+  background-color: #337ab7;
+  color: #fff;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .clickable-list li {
+    flex-wrap: wrap;
+  }
+
+  .clickable-list li span {
+    flex: 1;
+  }
+}
+
+.service-providers-details-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2.5%;
+}
+
+.service-providers-name-text {
+  padding-left: 9.5%;
+  color: #ffffff;
+}
+
+.total-burials-text {
+  color: #ffffff;
+}
+.successful-burials-text {
+  color: #ffffff;
+}
+.unsuccessful-burials-text {
+  color: #ffffff;
+}
+.success-rate-text {
+  padding-right: 9.5%;
+  color: #ffffff;
+}
+.clickable-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.clickable-list li {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  margin-left: 1.5%;
+
+  border-radius: 39px;
+  width: 95%;
+}
+.clickable-list li:hover {
+  background-color: #3ab0eb;
+}
+
+.service-providers-name {
+  padding-left: 9%;
+}
+
+.available-graves {
+}
+.booked-graves {
+}
+.success-rate {
+  padding-right: 9%;
+}
+.clickable-list li:hover .service-providers-name,
+.clickable-list li:hover .total-burials,
+.clickable-list li:hover .successful-burials,
+.clickable-list li:hover .unsuccessful-burials,
+.clickable-list li:hover .success-rate {
+  color: rgb(255, 255, 255);
+}
+

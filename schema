@@ -1,0 +1,147 @@
+-- Select the database
+USE heavenly_tomb_db;
+
+-- Regions table
+CREATE TABLE regions (
+  regionId INT AUTO_INCREMENT,
+  regionName VARCHAR(255),
+  PRIMARY KEY (regionId)
+);
+
+-- Graveyards table
+CREATE TABLE graveyards (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  region_id INT,
+  FOREIGN KEY (region_id) REFERENCES regions(regionId)
+);
+
+-- Deceased Persons table
+CREATE TABLE deceased_persons (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  date_of_death DATE,
+  date_of_burial DATE,
+  cause_of_death VARCHAR(255)
+);
+
+-- Graves table
+CREATE TABLE graves (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  graveyard_id INT NOT NULL,
+  person_id INT,
+  status_of_grave VARCHAR(20) NOT NULL,
+  FOREIGN KEY (graveyard_id) REFERENCES graveyards(id),
+  FOREIGN KEY (person_id) REFERENCES deceased_persons(id)
+);
+
+-- Service Providers table
+CREATE TABLE service_providers (
+  service_provider_name VARCHAR(255) PRIMARY KEY,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  region_id INT,
+  FOREIGN KEY (region_id) REFERENCES regions(regionId)
+);
+
+-- Services offered by Service Providers (Many-to-Many relationship)
+CREATE TABLE service_provider_services (
+  service_name VARCHAR(255),
+  service_provider_name VARCHAR(255),
+  PRIMARY KEY (service_name),
+  FOREIGN KEY (service_provider_name) REFERENCES service_providers(service_provider_name)
+);
+
+-- Users table
+CREATE TABLE users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(255) NOT NULL,
+  last_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  password VARCHAR(255)
+);
+
+-- Reviews table
+CREATE TABLE reviews (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  service_provider_name VARCHAR(255),
+  user_id INT,
+  review_text TEXT,
+  review_date DATETIME,
+  FOREIGN KEY (service_provider_name) REFERENCES service_providers(service_provider_name),
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Bookings table
+CREATE TABLE bookings (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  graveyard_id INT,
+  booking_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+  num_of_graves INT,
+  price DECIMAL(10, 2),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (graveyard_id) REFERENCES graveyards(id)
+);
+
+-- Messages table
+CREATE TABLE messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT,
+  service_provider_id VARCHAR(255),
+  message_text TEXT,
+  sent_date DATETIME,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (service_provider_id) REFERENCES service_providers(service_provider_name)
+);
+
+-- Admins table
+CREATE TABLE admins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role VARCHAR(255) NOT NULL
+);
+
+-- Admin Logins table
+CREATE TABLE admin_logins (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  admin_id INT,
+  login_date DATETIME,
+  FOREIGN KEY (admin_id) REFERENCES admins(id)
+);
+
+-- Notifications table
+CREATE TABLE notifications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  recipient_id INT,
+  notification_text TEXT,
+  created_date DATETIME,
+  FOREIGN KEY (recipient_id) REFERENCES admins(id)
+);
+
+-- Insert sample admin data
+INSERT INTO admins (username, password, role) VALUES ('superadmin1', 'password123', 'superadmin');
+INSERT INTO admins (username, password, role) VALUES ('superadmin2', 'password456', 'superadmin');
+INSERT INTO admins (username, password, role) VALUES ('reviewmoderator1', 'reviewpass1', 'reviewmoderator');
+INSERT INTO admins (username, password, role) VALUES ('reviewmoderator2', 'reviewpass2', 'reviewmoderator');
+
+-- Insert regions
+INSERT INTO regions (regionId, regionName) VALUES (1, 'Kunene');
+INSERT INTO regions (regionId, regionName) VALUES (2, 'Erongo');
+INSERT INTO regions (regionId, regionName) VALUES (3, 'Khomas');
+INSERT INTO regions (regionId, regionName) VALUES (4, 'Omusati');
+INSERT INTO regions (regionId, regionName) VALUES (5, 'Ohangwena');
+INSERT INTO regions (regionId, regionName) VALUES (6, 'Oshana');
+INSERT INTO regions (regionId, regionName) VALUES (7, 'Oshikoto');
+INSERT INTO regions (regionId, regionName) VALUES (8, 'Omaheke');
+INSERT INTO regions (regionId, regionName) VALUES (9, 'Hardap');
+INSERT INTO regions (regionId, regionName) VALUES (10, 'Kavango East');
+INSERT INTO regions (regionId, regionName) VALUES (11, 'Kavango West');
+INSERT INTO regions (regionId, regionName) VALUES (12, 'Otjozondjupa');
+INSERT INTO regions (regionId, regionName) VALUES (13, '!Karas');
+INSERT INTO regions (regionId, regionName) VALUES (14, 'Zambezi');
+-- Add more regions as needed

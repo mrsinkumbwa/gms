@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav-bar{
+    width: 100vw;
+    height: 50px;
+    background-color: #307399;
+    display: flex;
+}
+.first-nav{
+    width: 20%;
+    height: 100%;
+}
+.second-nav{
+    width: 80%;
+    height: 100%;
+}
+.second-nav ul{
+    display: flex;
+    justify-content: space-evenly;
+    line-height: 50px;
+    list-style: none;
+}
+.second-nav ul li a{
+    color: white;
+    list-style: none;
+    text-decoration: none;
+}
+.second-nav ul li::after{
+    content: '';
+    background-color: aqua;
+    height: 2px;
+    width: 0%;
+    display: block;
+    margin: auto;
+    transition: 0.4s;
+}
+.second-nav ul li:hover::after{
+    width: 100%;
+}
+
+/*
+End of Nav
+*/
+.main-image{
+    margin-top: 10px;
+   background-image: url(../images/2107.i305.016.F.m005.c7.realistic\ halloween\ spooky\ trees\ cemetery.jpg);
+   background-position: center;
+   background-size: cover;
+    width: 90%;
+    height: 500px;
+    margin: 10px auto;
+    text-align: center;
+    align-items: center;
+}
+.main-image h1{
+    padding-top: 20px;
+    color: white;
+    font-size: 50px;
+}
+.main-image p{
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.main-image input{
+    display: block;
+    width: 50%;
+    align-items: center;
+    margin: 0 auto;
+    padding: 7px;
+    font-size: 20px;
+}
+.main-image button{
+    display: block;
+    padding: 10px 100px;
+    margin: 10px auto;
+    color: white;
+    background: #3D5699;
+}
+/*
+End of Heavenly Tomb Background Images
+*/
+.findALoveOne{
+    margin-top: 10px;
+   background: black;
+    width: 90%;
+    height: 250px;
+    margin: 10px auto;
+    text-align: center;
+    align-items: center;
+
+}
+.findALoveOne h1{
+    padding-top: 20px;
+    color: white;
+    padding-bottom: 20px;
+}
+.findALoveOne input{
+    width: 20%;
+    margin-left: 40px;
+    padding: 7px;
+    margin-bottom: 20px;
+}
+.findALoveOne button{
+    display: block;
+    padding: 7px 100px;
+    margin: 5px auto;
+    color: white;
+    background: #3D5699;
+}
+/*
+End of Find A Love One
+*/
+footer{
+    margin-top: 10px;
+    background-color: #307399;
+     width: 90%;
+     height: 60px;
+     margin: 10px auto;
+     text-align: center;
+     align-items: center;
+     line-height: 60px;
+     
+ 
+}
+
+
+.map-container {
+    background-image: url('../images/namibia-regions-map.svg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust as needed */
+    height: 100%;
+}

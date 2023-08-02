@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+  }
+ 
+  
+  /* Media query for responsive design */
+  .custom-button-width{
+    width: 70px;
+    height: 25px;
+    position: relative;
+  }
+  .custom-button-width i {
+    position: absolute;
+    left: 10px; /* Adjust the left positioning as needed */
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  table.table-hover tbody tr:not(#clickable-row):hover {
+    background-color: #006eff; /* Light blue color */
+    cursor: pointer; /* Change cursor to pointer */
+  }
+  table.table-hover tbody tr#clickable-row {
+    cursor: pointer;
+  }
+ 
+  table.table-hover thead {
+    background-color: #248aff; /* Dark blue color */
+    color: white; /* White text color */
+  }
+  
+  .service-providers-header-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #006eff;
+    padding-top: 1em;
+    
+  }
+  .service-providers-subheading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #006eff;
+    margin: 1% 0% 0.5% 0;
+  
+  }
+  
+  .img-container{
+    width: 100%; /* Adjust the width and height as needed */
+    height: 10em;
+    background:rgb(255, 255, 255);
+    background-size: cover; /* This ensures the image covers the entire div */
+    background-position: center top; /* Center the image within the div */
+  
+  }
+  
+  
+  

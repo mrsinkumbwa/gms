@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+  }
+  .navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a88fe;
+    transition: all 0.5s ease;
+    padding: 10px;
+  }
+  .navbar-nav {
+    list-style: none; /* Remove the default bullet points */
+    display: flex;
+  }
+  .navbar-nav li {
+    margin-right: 1em;
+  }
+  .navbar-nav li a {
+    color: white;
+    padding: 1em 0em;
+    margin: 0em 10em 0em 0em;
+    transition: all 0.5 ease;
+  }
+  .navbar-nav li a:hover {
+    color: #bcd6f2;
+  }
+  .header-text {
+    margin-top: 4em;
+  }
+  /* Media query for responsive design */
+  .root-container-service-providers {
+    background-image: url("../img/main1.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100em;
+  }
+  .service-providers-header-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    padding-top: 2.4em;
+    margin-bottom: 1em;
+  }
+  .service-providers-subheading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    margin: 1% 0% 1% 0;
+  
+  }
+  
+  .img-container{
+    width: 100%; /* Adjust the width and height as needed */
+    height: 20em;
+    background-image: url('../img/pexels-koolshooters-6495746.jpg');
+    background-size: cover; /* This ensures the image covers the entire div */
+    background-position: center top; /* Center the image within the div */
+  
+  }
+  .search-container {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .search-input {
+    flex: 1;
+    padding: 0.5em;
+    width: 75%;
+    margin-left: 12%; /* Center the input horizontally */
+    margin-bottom: 3%;
+    margin-top: 3%;
+    border-radius: 39px;
+  
+  }
+  
+  
+  .search-button {
+    padding: 5px 10px;
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+  }
+  
+  @media (max-width: 768px) {
+    .clickable-list li {
+      flex-wrap: wrap;
+    }
+  
+    .clickable-list li span {
+      flex: 1;
+    }
+  }
+  
+  .service-providers-details-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2.5%;
+    margin-right: 6%;
+  }
+  
+  .service-providers-name-text {
+    padding-left: 6%;
+    
+    color: #ffffff;
+  }
+  
+  .total-burials-text {
+    color: #ffffff;
+  }
+  .successful-burials-text {
+    color: #ffffff;
+  }
+  .unsuccessful-burials-text {
+    color: #ffffff;
+  }
+  .success-rate-text {
+    padding-right: 9.5%;
+    color: #ffffff;
+  }
+  .clickable-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .clickable-list li {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    margin-left: 1.5%;
+  
+    border-radius: 39px;
+    width: 95%;
+  }
+  .clickable-list li:hover {
+    background-color: #3ab0eb;
+  }
+  
+  .service-providers-name {
+    padding-left: 9%;
+  }
+  
+  .available-graves {
+  }
+  .booked-graves {
+  }
+  .success-rate {
+    padding-right: 9%;
+  }
+  .clickable-list li:hover .service-providers-name,
+  .clickable-list li:hover .total-burials,
+  .clickable-list li:hover .successful-burials,
+  .clickable-list li:hover .unsuccessful-burials,
+  .clickable-list li:hover .success-rate {
+    color: rgb(255, 255, 255);
+  }

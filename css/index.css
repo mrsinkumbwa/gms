@@ -1,0 +1,190 @@
+/* Reset some default styles for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+}
+
+.logoImage {
+  /* Add styles for the logo image here */
+}
+
+.logoName {
+  margin-left: 1rem;
+}
+
+.logoName h1 {
+  font-size: 1.5rem;
+}
+
+.navbar {
+  margin-left: auto;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+}
+
+.nav-link-container {
+  margin-right: 1rem;
+}
+
+.nav-link a {
+  text-decoration: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+}
+
+/* Main styles */
+main {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.left {
+  flex: 1;
+  max-width: 300px;
+}
+
+.container {
+  background-color: #f9f9f9;
+  padding: 1rem;
+}
+
+.container h2 {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Add more styles as needed for the other sections and elements */
+
+/* Footer styles (you can add this to the end of your CSS file) */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+/* CSS for Styling SVG Elements */
+
+/* Selecting SVG elements by their IDs */
+#map {
+    width: 100%; /* Set the width of the SVG container */
+    height: 100%; /* Set the height of the SVG container */
+    background-color: #f0f0f0; /* Set a background color for the SVG container */
+  }
+  
+  #ocean {
+    fill: #b2d4ff; /* Set fill color for the ocean element */
+  }
+  
+  #mountains {
+    fill: #c2b280; /* Set fill color for the mountains element */
+    stroke: #6b6b6b; /* Set stroke color for the mountains element */
+    stroke-width: 2; /* Set stroke width for the mountains element */
+  }
+  
+  /* Selecting SVG elements by their classes */
+  .city {
+    fill: #ff4d4d; /* Set fill color for all elements with the class "city" */
+    stroke: #cc0000; /* Set stroke color for all elements with the class "city" */
+    stroke-width: 1; /* Set stroke width for all elements with the class "city" */
+  }
+  
+  /* Selecting SVG elements by their tags */
+  circle {
+    fill: #ff9900; /* Set fill color for all circle elements */
+  }
+  
+  text {
+    font-size: 12px; /* Set font size for all text elements */
+    fill: #333; /* Set fill color for all text elements */
+  }
+  
+  
+  /* CSS for Layout and Positioning */
+  
+  /* Center the SVG map container within its parent */
+  #map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* Set the height of the map container */
+  }
+  
+  
+  /* CSS for Animation */
+  
+  /* Add a smooth transition when hovering over city elements */
+  .city:hover {
+    fill: #ff3333; /* Change the fill color on hover */
+    stroke-width: 2; /* Increase the stroke width on hover */
+  }
+  
+  /* Define a keyframe animation for the ocean element */
+  @keyframes oceanAnimation {
+    0% { fill: #b2d4ff; }
+    50% { fill: #aad4ff; }
+    100% { fill: #b2d4ff; }
+  }
+  
+  /* Apply the animation to the ocean element */
+  #ocean {
+    animation-name: oceanAnimation;
+    animation-duration: 4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  

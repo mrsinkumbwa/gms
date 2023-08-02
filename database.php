@@ -4,7 +4,7 @@ class Database {
     private $host = "localhost";
     private $username = "mbanga";
     private $password = "bite@00427";
-    private $database = "gms";
+    private $database = "heavenly_tomb_db";
     private $conn;
 
     private function connectToDatabase() {

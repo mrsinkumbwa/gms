@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/avbobPage.css" />
+    <title>Heavenly Tomb | AVBOB</title>
+  </head>
+  <body>
+    <!--navbar-->
+
+    <header>
+      <nav class="navbar">
+        <div class="hamburger">
+          <!--navbar bars-->
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+
+        <ul class="navbar-nav">
+          <div class="nav-link-container">
+            <li class="nav-link"><a href="/html/index.html">Home</a></li>
+          </div>
+          <div class="nav-link-container">
+            <li class="nav-link">
+              <a href="../html/service-providers-page.html">Funeral Services</a>
+              <ul class="dropdown-menu">
+                <!-- Dropdown options will be populated dynamically using php and js -->
+              </ul>
+            </li>
+          </div>
+          <div class="nav-link-container">
+            <li class="nav-link">
+              <a href="/html/cemeteries.html">Buy Graves</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    
+      
+        <!--first section-->
+        <section class="funeral-services">
+          <h1 class="service-provider-page-name">AVBOB</h1>
+          <h2 class="company-details">Company Details</h2>
+      
+          
+          <div class="card">
+            <h1 class="card-header">Cremation</h1>
+            <div class="card-description">
+              Cremation has become a popular option for many people in Namibia because it can be more flexible as to where and when you hold the service.
+            </div>
+            <button class="read-more-button">Read More</button>
+          </div>
+          <div class="card">
+            <h1 class="card-header">Burial Service</h1>
+            <div class="card-description">
+              A casket burial is a traditional burial service, but there are many options to choose from when it comes to burial services in Namibia.             
+            </div>
+            <button class="read-more-button">Read More</button>
+          </div>
+          <div class="card">
+            <h1 class="card-header">Reperation of Body</h1>
+            <div class="card-description">
+              When someone passes away in another area, you may wish to repatriate the remains to your area in Namibia.              </div>
+            <button class="read-more-button">Read More</button>
+            </div>
+        </section>
+          
+          <!--second section-->
+
+        <section class="reviews-section">
+           <!--form-->
+           <button class="leave-review">Leave Review</button>
+          <div class="review-form-container">
+              
+            <form onsubmit="submitForm()" method="post" action="../php/avbobPage.php">
+                
+              <input type="text" name="name" placeholder="name">
+              <input type="text" name="surname" placeholder="surname">
+              <textarea type="text" rows="20" cols="50" name="review" >
+
+              <button type="submit">Send Review</button>
+            </form>
+          </div>
+            
+
+        </section>
+        <section class="contact-service-provider">
+            <!--form-->
+          <div class="contact-form-container">
+            <div class="contact-form-container">
+              
+              <form onsubmit="submitForm()" method="post" action="../php/avbobPage.php">
+                  
+                <input type="text" name="name" placeholder="Enter Name">
+                <input type="text" name="contact-number" placeholder="Enter Contact Number">
+                <textarea></textarea>
+  
+                <button type="submit"></button>
+              </form>
+            </div>
+          </div>
+              
+        </section>
+        
+       </body>
+</html>

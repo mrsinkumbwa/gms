@@ -1,0 +1,42 @@
+/* Add custom styles for the layout */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Rubik+Mono+One&display=swap');
+/* Sticky top header */
+* {
+    font-family: 'Poppins';
+    font-size: small;
+    color: #132;
+    font-weight: 600;
+    word-spacing: normal;
+    letter-spacing: .1em;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(1fr, 12);
+    grid-template-rows: repeat(1fr, 12);
+    gap: 25px;
+    justify-content: center;
+}
+#header {
+    font-size: 3em;
+    align-items: center;
+}
+
+#registration-form {
+    display: inherit;
+    align-content: center;
+}
+.form-group {
+    margin-bottom: 1em;
+}
+.form-group label, input{
+    display: block;
+}
+.form-group input {
+    width: 24em;
+}
+#registerButton {
+    text-align: center;
+    width: 8em;
+    padding: 1em;
+}

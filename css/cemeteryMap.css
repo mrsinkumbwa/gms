@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+}
+.cemetery-map-section{
+  background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/cemeteryMapImg.jpg');
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 30px;
+}
+.cemetery-map-section h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.7em;
+    color: white;
+    
+    
+}
+.container-headr{
+  font-size: 1em;
+  color: white;
+  font-weight: 100;
+  padding: 1em;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+svg{
+  display: block;
+}
+.svg-container{
+  margin: 1em auto;
+    background: rgb(32, 112, 250, 0.4);
+    
+    width: 50%;
+    padding: 50px;
+    border-radius: 2em;
+}
+.cem-section:hover {
+  fill: rgb(72, 72, 255);
+  cursor: pointer;
+}
+.cem-section-back{
+  fill:blue
+}

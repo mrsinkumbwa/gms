@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/hardap.css" />
+
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">Logo</div>
+        <div class="hamburger">
+          <svg
+            class="hamburger-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="white"
+            width="24"
+            height="24"
+          >
+            <!-- Insert your downloaded SVG code here -->
+          </svg>
+        </div>
+        <ul class="navbar-nav">
+          <li><a href="/html/index.html">Home</a></li>
+          <li class="has-dropdown">
+            <a href="/php/index.php">Funeral Services</a>
+            <ul class="dropdown-menu">
+              <!-- Dropdown options will be populated dynamically using JavaScript -->
+            </ul>
+          </li>
+          <li><a href="/html/cemeteries.html">Cemeteries</a></li>
+        </ul>
+        <div class="hamburger"></div>
+      </nav>
+      
+      <!--home landing page-->
+      <div class="root-container-service-providers">
+        <div class="cemeteries-list-container">
+          <div class="img-container">
+            <h1 class="service-providers-header-text">Hardap Region</h1>
+            <p class="service-providers-subheading">
+              Bellow you will find all cemeteries in Hardap Region
+            </p>
+            <!--search service provider-->
+            <input
+              type="text"
+              class="search-input"
+              id="searchQuery"
+              name="search_query"
+              placeholder="       Search Hardap Region Cemeteries"
+            />
+          </div>
+  
+          <!--service providers details-->
+          <div class="service-providers-details-text">
+            <h5 class="service-providers-name-text">Cemetery name</h5>
+            <h5 class="total-burials-text">Available Graves</h5>
+            <h5 class="successful-burials-text">Booked Graves</h5>
+            <h5 class="unsuccessful-burials-text">Total Graves</h5>
+            
+          </div>
+  
+          <ul class="clickable-list" id="searchResults"></ul>
+        </div>
+      </div>
+</body>
+</html>

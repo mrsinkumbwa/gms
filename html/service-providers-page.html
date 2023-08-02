@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/service-providers-page.css" />
+    <title>Document</title>
+    <script src="js/jquery.min.js"></script>
+
+    <script src="/js/service-providers-page.js"></script>
+  </head>
+
+  <body>
+    <!--navbar-->
+
+    <header>
+      <nav class="navbar">
+        <div class="hamburger">
+          <!--navbar bars-->
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+
+        <ul class="navbar-nav">
+          <div class="nav-link-container">
+            <li class="nav-link"><a href="/html/index.html">Home</a></li>
+          </div>
+          <div class="nav-link-container">
+            <li class="nav-link">
+              <a href="../html/service-providers-page.html">Funeral Services</a>
+              <ul class="dropdown-menu">
+                <!-- Dropdown options will be populated dynamically using php and js -->
+              </ul>
+            </li>
+          </div>
+          <div class="nav-link-container">
+            <li class="nav-link">
+              <a href="/html/cemeteries.html">Buy Graves</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    
+    <!--home landing page-->
+    <div class="root-container-service-providers">
+      <div class="cemeteries-list-container">
+        <div class="img-container">
+          <h1 class="service-providers-header-text">Service Providers</h1>
+          <p class="service-providers-subheading">
+            Click Service Provider name for more details
+          </p>
+          <!--search service provider-->
+          <input
+            type="text"
+            class="search-input"
+            id="searchQuery"
+            name="search_query"
+            placeholder="       Search Service Providers"
+          />
+        </div>
+
+        <!--service providers details-->
+        <div class="service-providers-details-text">
+          <h5 class="service-providers-name-text">Service Provider</h5>
+          <h5 class="total-burials-text">Total Burials Done</h5>
+          <h5 class="successful-burials-text">Successful Burials</h5>
+          <h5 class="unsuccessful-burials-text">Poorly Done Burials</h5>
+          <h5 class="success-rate-text">Success Rate</h5>
+        </div>
+
+        <ul class="clickable-list" id="searchResults"></ul>
+      </div>
+    </div>
+  </body>
+</html>
