@@ -1,0 +1,707 @@
+*{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    list-style-type: none;
+}
+/* Reset default margin and padding for body and header elements */
+body, header {
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    overflow-x: hidden;
+}
+/* Add background image to the main section */
+body::before {
+    background-image: url('http://localhost/gms/serviceProviderFacingView/assets/images/bgi.jpg'); /* Replace 'path_to_your_background_image.jpg' with the actual image path */
+    background-size:cover;
+    background-position:center;
+    background-repeat: no-repeat;
+    /* Add other styles to make the content visible and readable */
+    color: #fff; /* Set text color to white for better readability */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Set the z-index to -1 to position the pseudo-element behind the content */
+    filter: blur(5px); /* Add blur effect to the background image */
+}
+/* Add animation when scrolling */
+@keyframes fadeIn {
+    0% {
+    opacity: 0;
+    }
+    100% {
+    opacity: 1;
+    }
+}
+/* When scrolling, remove the blur effect */
+body.scrolled {
+    filter: none;
+}
+main {
+    animation: fadeIn 1s ease-in-out; /* Add animation to the main section */
+}
+
+/* Add flexbox to align items in the header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+/* Style the logo */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 2em;
+    font-family: 'Rubik Mono One', sans-serif;
+}
+
+/* Style for the hamburger icon */
+.hamburger {
+    display: block; /* Show the hamburger icon by default on smaller screens */
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin-bottom: 5px;
+    background-color: #fff;
+    transition: transform 0.3s, opacity 0.4s; /* Add a transition for smooth animation */
+}
+
+/* Style for the X icon (hidden by default) */
+.close-icon {
+    display: none;
+}
+
+.close-icon span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin-bottom: 5px;
+    background-color: #000;
+    transform-origin: 4px 0px;
+    transition: transform 1s, opacity 0.3s; /* Add a transition for smooth animation */
+}
+
+/* Add styles for the hamburger icon when it's active */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translateX(6px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 70;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateX(6px);
+}
+
+/* Add styles for the close icon when it's active */
+.close-icon.active span:nth-child(1) {
+    transform: rotate(0) translateX(0);
+}
+
+.close-icon.active span:nth-child(2) {
+    opacity: 1;
+}
+
+.close-icon.active span:nth-child(3) {
+    transform: rotate(0) translateX(0);
+}
+/* Move the navigation to the right side */
+.main-nav {
+    margin-left: auto;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.main-nav li:first-child {
+    margin-left: 0;
+}
+/* Media query to hide the hamburger icon on larger screens */
+@media screen and (min-width: 957px) {
+    .hamburger {
+    display: none; /* Hide the hamburger icon on larger screens */
+    }
+}
+/* Media query for screens with a maximum width of 957px */
+@media (max-width: 957px) {
+    /* Hide the close icon and show the hamburger icon when the screen size is reduced */
+    .close-icon {
+    display: none;
+    }
+
+    .hamburger {
+    display: block;
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+    }
+
+    /* You may want to adjust the styles of the main-nav to create a dropdown effect */
+    .main-nav ul {
+    display: none; /* Hide the navigation items by default */
+    }
+
+    /* Show the navigation items when the hamburger icon is clicked (toggle effect) */
+    .hamburger.active + .main-nav ul {
+    display: block;
+
+    }
+    .hamburger.active li {
+    list-style: none; /* Remove the disc styles from list items inside the hamburger */
+    margin-bottom: .4em;
+    border-radius: 8em;
+    }
+
+    .hamburger.active li:not(.close-icon) a {
+    text-decoration: none; /* Remove text decoration from anchor tags inside the hamburger, excluding the close icon */
+    color: #fff; /* Change the color of the text to white for anchor tags inside the hamburger, excluding the close icon */
+    }
+}
+
+/* Style the navigation links */
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+/* Add a hover effect for the navigation links */
+.main-nav a:hover {
+    background-color: #555;
+}
+
+/* Style the main sections */
+.main-section {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:flex-start;
+    height: auto;
+    margin: 2em;
+}
+
+.main-section h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-family: 'Rubik Mono One', sans-serif;
+    font-size: 3em;
+    font-weight: 500;
+    text-align: center;
+}
+
+.main-section p {
+    color: #555;
+    line-height: 1.6;
+}
+
+.main-section ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.main-section li {
+    color: #555;
+    line-height: 1.6;
+}
+
+
+/* Additional styles for the banner */
+.service-provider-banner {
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: 700;
+    /* Set a fixed height for the banner to prevent it from changing during text animation */
+    height: 2em;
+    overflow: hidden;
+}
+
+/* Additional styles for the animated text */
+#animated-text {
+    font-size: 2em;
+    font-weight: 900;
+    white-space: wrap;
+    margin: 0em auto;
+    padding: .2em;
+    height: 2.4em;
+    text-align: center;
+    overflow:hidden;
+    animation: typeText 3s steps(30) 1s infinite alternate;
+    color: #000; /* Set the color to black (#000) */
+}
+
+/* Style the login form section */
+.login-form {
+    max-width: 500px;
+    margin: 0em auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-form h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.login-form form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-form form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-form form button:hover {
+    background-color: #555;
+}
+
+.login-form p {
+    color: #555;
+}
+
+.login-form a {
+    color: #333;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.login-form a:hover {
+    opacity: 0.7;
+}
+
+/* Style the features section */
+#features {
+    max-width: 800px;
+    margin: 40px auto; /* Adjust the margin top and bottom */
+    padding: 20px;
+    background-color: #fff; /* Set the background color to white */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#features h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#features p {
+    color: #555;
+    line-height: 1.6;
+}
+
+#features ul {
+    list-style: disc;
+    margin-left: 20px;
+    color: #555;
+}
+
+#features li {
+    line-height: 1.6;
+    list-style-type: none;
+}
+
+/* Style the pricing section */
+#pricing {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff; /* Add white background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#pricing h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#pricing p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Style the pricing table */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+th,
+td {
+    padding: 12px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+/* Add styling for Monthly, Annual, and Free sections */
+tbody > tr:nth-child(odd) {
+    background-color: #e6f7ff; /* Blue */
+}
+
+tbody > tr:nth-child(2n) {
+    background-color: #f8e6e6; /* Red */
+}
+
+tbody > tr:nth-child(3n) {
+    background-color: #eaffd1; /* Green */
+}
+
+tbody > tr:nth-child(4n) {
+    background-color: #fff8e5; /* Yellow */
+}
+
+/* Add media query for responsiveness */
+@media (max-width: 956px) {
+    table {
+    display: block;
+    margin-bottom: 20px;
+    }
+
+    tbody > tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    }
+
+    td {
+    width: 100%;
+    box-sizing: border-box;
+    }
+
+    /* Hide both "Subscription Model" and "Price" column headers */
+    th:nth-child(n+2) {
+    display: none;
+    }
+
+    /* Remove default bullet points and make bullet points green */
+    ul {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+    }
+
+    main section li:before {
+    content: "\2022";
+    color: #00cc66; /* Green */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    }
+}
+
+/* Apply the same styles for screen widths greater than 956px */
+@media (min-width: 957px) {
+    table {
+    margin-bottom: 20px;
+    }
+
+    /* Remove default bullet points and make bullet points green */
+    ul {
+    list-style-type: none;
+    padding-left: 0;
+    text-align: left;
+    }
+
+    main section li:before {
+    content: "\2022";
+    color: #00cc66; /* Green */
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+    }
+}
+
+/* Style the register form */
+.register-form {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.register-form h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.register-form input,
+.register-form select,
+.register-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.register-form label {
+    display: block;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.register-form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-form button:hover {
+    background-color: #555;
+}
+
+.register-form p {
+    color: #555;
+}
+#bio-alert {
+    color: red;
+    display: none;
+}
+/* Add this CSS to your existing styles */
+.register-form.active {
+    display: block;
+}
+
+.register-form {
+    display: none;
+}
+/* Common styles for avatar container and circle */
+.avatar-container {
+position: relative;
+}
+
+.avatar-circle {
+position: relative;
+width: 72px;
+height: 72px;
+border-radius: 50%;
+overflow: hidden;
+}
+
+/* Styles for avatar icon and image */
+.avatar-icon {
+font-size: 48px;
+color: #999;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+z-index: 1;
+}
+
+.avatar-image {
+display: none; /* Initially hide the uploaded image */
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+/* Show the uploaded image and hide the avatar icon when an image is selected */
+.avatar-container.has-image .avatar-icon {
+display: none;
+}
+
+.avatar-container.has-image .avatar-image {
+display: block;
+}
+
+/* Style the about us section */
+#about {
+    max-width: 800px;
+    margin: 40px auto; /* Adjust the margin top and bottom */
+    padding: 20px;
+    background-color: #fff; /* Set the background color to white */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#about h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#about p {
+    color: #555;
+    line-height: 1.6;
+}
+
+#about ul {
+    list-style: disc;
+    margin-left: 20px;
+    color: #555;
+}
+
+#about li {
+    line-height: 1.6;
+    list-style-type: none;
+}
+
+/* Style the contact form */
+#contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#contact h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#contact p {
+    color: #555;
+    line-height: 1.6;
+}
+
+#contact form label,
+#contact form input,
+#contact form textarea,
+#contact form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the textarea to be resizable only vertically */
+#contact form textarea {
+    resize: vertical;
+}
+
+#contact form button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contact form button:hover {
+    background-color: #555;
+}
+
+#contact form p {
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 14px;
+}
+
+/* Style the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+footer div {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+footer h3 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 5px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+footer a:hover {
+    opacity: 0.7;
+}
+
+footer p {
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 14px;
+}

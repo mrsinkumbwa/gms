@@ -1,0 +1,7 @@
+.alert {
+  color: red;
+}
+/* Add CSS styles to hide the register form by default */
+.register-form {
+  display: none;
+}
